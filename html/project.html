@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-        <meta charset="UTF-8">
-        <link href= "../css/style.css" type="text/css" rel="stylesheet"/>
-        <title>  Homepage for Semesterproject </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage for Semesterproject</title>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-        <h1> Webcomputing and OS Project Dynamic website </h1>
+   <div class="header-row">
+    <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
+        <img src="images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
+    </a>
 
-        <p>
-        <a href="https://www.th-brandenburg.de/">
-        <img src="images/Thb-logo.png" alt="TH Brandenburg logo" width"180">
-        </a>
-        </p>
+    <h1>Webcomputing and OS Project Dynamic Website</h1>
+</div>
 
-<head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-<Link rel="stylesheet" href="css/main. css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title> Hello World Example</title>
-</head>
-<body style="overscroll-behavior-x: auto;"> <div class="input-group mb-3">
-<span class="input-group-text" id="basic-addon1">Vorname</span>
-<input type="text" class="form-control" placeholder="Vorname" aria-label="Vorname" aria>
-</div>
-<div class="input-group mb-3">
-<span class="input-group-text" id="basic-addon1">Nachname</span>
-<input type="text" class="form-control" placeholder="Nachname" aria-label="Nachname" aria>
-</div>
-<div class="input-group mb-3">
-<span class=" input-group-text" id="basic-addon1">Email</span>
-<input type="text" class="form-control" placeholder="Email" aria-label="Email" aria>
-	</div>
+    <div class="wrapper">
+        <div id="formBox">
+            <form id="userForm">
+                <label for="vorname">Vorname</label>
+                <input type="text" id="vorname" placeholder="Vorname" autocomplete="off">
+
+                <label for="nachname">Nachname</label>
+                <input type="text" id="nachname" placeholder="Nachname" autocomplete="off">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" autocomplete="off">
+
+                <button type="submit">Absenden</button>
+            </form>
+        </div>
+
+        <div id="outputBox">
+            <h2>Eingegebene Daten</h2>
+            <p><strong>Vorname:</strong> <span id="showVorname"></span></p>
+            <p><strong>Nachname:</strong> <span id="showNachname"></span></p>
+            <p><strong>Email:</strong> <span id="showEmail"></span></p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
-</hmtl>
+</html>
