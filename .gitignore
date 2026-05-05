@@ -5,3 +5,11 @@
 .vscode/settings.json
 .vscode/launch.json
 .vscode/tasks.json
+
+#panServer .files
+.bash_history
+.bash_logout
+.bashrc
+.gitconfig
+.profile
+.ssh/
