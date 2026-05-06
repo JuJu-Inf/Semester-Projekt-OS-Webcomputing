@@ -21,12 +21,14 @@ body {
     transform: translateY(-50%);
 }
 
+/* individual logo formatting/customization */
 .logo {
     width: 190px;
     height: auto;
     display: inline-block;
 }
 
+/* individual h1 formatting/customization */
 h1 {
     display: inline-block;
     background-color: #8FAFC7;
@@ -39,7 +41,7 @@ h1 {
 h2 {
     text-align: left;
 }
-
+/* wrapper (h1 and logo) formatting */
 .wrapper {
     max-width: 500px;
     margin: 30px auto;
@@ -49,7 +51,10 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
+label {
+   font-weight: bold;
+}
+/* Formatting the input module */
 form {
     display: flex;
     flex-direction: column;
@@ -60,13 +65,14 @@ label {
     font-weight: bold;
 }
 
+
 input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #aaa;
     border-radius: 6px;
 }
-
+/* Submit button (Player Info) */
 button {
     margin-top: 10px;
     padding: 12px;
