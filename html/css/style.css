@@ -38,9 +38,6 @@ h1 {
     margin: 0;
 }
 
-h2 {
-    text-align: left;
-}
 /* wrapper (h1 and logo) formatting */
 .wrapper {
     max-width: 500px;
@@ -91,4 +88,21 @@ button:hover {
 #outputBox {
     display: none;
     margin-top: 20px;
+}
+
+body {
+    margin: 0;
+}
+
+.game-wrapper {
+    width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.game-wrapper iframe {
+    display: block;
+    border: none;
 }
