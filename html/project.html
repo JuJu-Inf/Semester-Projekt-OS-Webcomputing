@@ -1,51 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<!-- import german char set -->
     <meta charset="UTF-8">
-<!-- layout width relative to screen and load at 100% zoom -->
+    <!-- layout width relative to screen and load at 100% zoom -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- website title -->
+    <!-- website title -->
     <title>Homepage for Semesterproject</title>
-<!-- refferencing the css -->
+    <!-- referencing the css -->
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-<!-- adding Logo and Header and putting them in the header-row class for later formatting -->
-   <div class="header-row">
-    <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
-    <img src="images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
-    </a>
+    <!-- adding Logo and Header and putting them in the header-row class for later formatting -->
+    <div class="header-row">
+        <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
+            <img src="images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
+        </a>
 
-<h1>Webcomputing and OS Project Dynamic Website</h1>
-
-</div>
-
-
-    <div class="wrapper">
-        <div id="formBox">
-            <form id="userForm">
-                <label for="vorname">Vorname</label>
-                <input type="text" id="vorname" placeholder="Vorname" autocomplete="off">
-
-                <label for="nachname">Nachname</label>
-                <input type="text" id="nachname" placeholder="Nachname" autocomplete="off">
-
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Email" autocomplete="off">
-
-                <button type="submit">Absenden</button>
-            </form>
-        </div>
-
-        <div id="outputBox">
-            <h2>Eingegebene Daten</h2>
-            <p><strong>Vorname:</strong> <span id="showVorname"></span></p>
-            <p><strong>Nachname:</strong> <span id="showNachname"></span></p>
-            <p><strong>Email:</strong> <span id="showEmail"></span></p>
-        </div>
+        <h1>Webcomputing and OS Project Dynamic Website</h1>
     </div>
 
-    <script src="js/main.js"></script>
+    <!-- Information Input box and submit button -->
+    <div class="wrapper">
+        <form action="cgi-bin/script.cgi" method="post"> <!-- sends form to CGI Python script and method = "post" sends the values via HTTP Post-->
+            <label for="vorname">Vorname</label>
+            <input type="text" id="vorname" name="vorname" placeholder="Vorname" autocomplete="off">
+
+            <label for="nachname">Nachname</label>
+            <input type="text" id="nachname" name="nachname" placeholder="Nachname" autocomplete="off">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email" autocomplete="off">
+
+            <button type="submit">Absenden</button>
+        </form>
+    </div>
+
+<!-- Git-hub repository link-->
+
+    <footer>
+       <p>
+          <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">Zum GitHub Repository</a>
+       </p>
+    </footer>
 </body>
 </html>
