@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Snake Game</title>
+<style>
+    body { margin: 0; background: #001155; }
+    canvas { display: block; margin: auto; background: #111; }
+</style>
+</head>
+<body>
+<h1 style="text-align:center; color:white;">Snake Game</h1>
+
+<canvas id="game" width="1000" height="1000"
+	style="display:block; margin:auto; background:#111;">
+</canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let snake = [{x: 300, y: 300}];
+let direction = "RIGHT";
+let food = {x: 100, y: 100};
+let size = 20;
+let score = 0;
+
+document.addEventListener("keydown", e => {
+    if (e.key === "w" && direction !== "DOWN") direction = "UP";
+    if (e.key === "s" && direction !== "UP") direction = "DOWN";
+    if (e.key === "a" && direction !== "RIGHT") direction = "LEFT";
+    if (e.key === "d" && direction !== "LEFT") direction = "RIGHT";
+});
+
+function update() {
+    let head = { ...snake[0] };
+
+    if (direction === "UP") head.y -= size;
+    if (direction === "DOWN") head.y += size;
+    if (direction === "LEFT") head.x -= size;
+    if (direction === "RIGHT") head.x += size;
+
+    // Wand-Kollision
+    if (head.x < 0 || head.y < 0 || head.x >= 1000 || head.y >= 1000) {
+        reset();
+        return;
+    }
+
+    // Selbst-Kollision
+    for (let s of snake) {
+        if (head.x === s.x && head.y === s.y) {
+            reset();
+            return;
+        }
+    }
+
+    snake.unshift(head);
+
+    // Essen
+    if (head.x === food.x && head.y === food.y) {
+        food.x = Math.floor(Math.random() * 30) * size;
+        food.y = Math.floor(Math.random() * 30) * size;
+        score++;
+        console.log("Score:", score);
+    } else {
+        snake.pop();
+    }
+}
+
+function draw() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 1000, 1000);
+
+    // Snake
+    ctx.fillStyle = "lime";
+    for (let s of snake) {
+        ctx.fillRect(s.x, s.y, size, size);
+    }
+
+    // Food
+    ctx.fillStyle = "red";
+    ctx.fillRect(food.x, food.y, size, size);
+}
+
+function reset() {
+    snake = [{x: 300, y: 300}];
+    direction = "RIGHT";
+    score = 0;
+}
+
+function gameLoop() {
+    update();
+    draw();
+}
+
+setInterval(gameLoop, 100);
+</script>
+
+</body>
+</html>
