@@ -1,5 +1,11 @@
+/* implementing/loading the custom font */
+@font-face {
+    font-family: "PressStart2P";
+    src: url("../font/PressStart2P-Regular.ttf") format("truetype")
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: PressStart2P;
     background-color: #3A434F;
     color: #222;
     margin: 0;
@@ -23,7 +29,7 @@ body {
 
 /* individual logo formatting/customization */
 .logo {
-    width: 190px;
+    width: 170px;
     height: auto;
     display: inline-block;
 }
