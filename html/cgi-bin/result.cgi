@@ -51,8 +51,8 @@ print(f"""<!DOCTYPE html>
     <footer>
         <p>
             <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
-                Zum GitHub Repository
-            </a>
+              <img  src="../images/GitHub_Logo.png" alt="TH Brandenburg logo" class="logo">
+          </a>
         </p>
     </footer>
 </body>
