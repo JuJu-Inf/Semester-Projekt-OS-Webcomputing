@@ -6,8 +6,8 @@
 
 body {
     font-family: PressStart2P;
-    background-color: #3A434F;
-    color: #222;
+    background-color: #000000;
+    color: #FFFFFF	;
     margin: 0;
     padding: 30px;
 }
@@ -37,8 +37,8 @@ body {
 /* individual h1 formatting/customization */
 h1 {
     display: inline-block;
-    background-color: #8FAFC7;
-    color: #1F2933;
+    background-color: #111111;
+    color: #FFFFFF;
     padding: 15px 20px;
     border-radius: 8px;
     margin: 0;
@@ -48,7 +48,7 @@ h1 {
 .wrapper {
     max-width: 500px;
     margin: 30px auto;
-    background-color: white;
+    background-color: #111111;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -57,6 +57,7 @@ h1 {
 label {
    font-weight: bold;
 }
+
 /* Formatting the input module */
 form {
     display: flex;
@@ -71,6 +72,7 @@ label {
 
 input {
     padding: 10px;
+    font-family: PressStart2P;
     font-size: 16px;
     border: 1px solid #aaa;
     border-radius: 6px;
@@ -79,8 +81,9 @@ input {
 button {
     margin-top: 10px;
     padding: 12px;
+    font-family: PressStart2P;
     font-size: 16px;
-    background-color: #005aaa;
+    background-color: #222222;
     color: white;
     border: none;
     border-radius: 6px;
@@ -88,7 +91,7 @@ button {
 }
 
 button:hover {
-    background-color: #003f7a;
+    background-color: #333333;
 }
 
 #outputBox {
