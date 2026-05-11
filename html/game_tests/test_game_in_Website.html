@@ -23,15 +23,27 @@ let direction = "RIGHT";
 let food = {x: 100, y: 100};
 let size = 20;
 let score = 0;
+let canChangeDirection = true;
 
 document.addEventListener("keydown", e => {
-    if (e.key === "w" && direction !== "DOWN") direction = "UP";
-    if (e.key === "s" && direction !== "UP") direction = "DOWN";
-    if (e.key === "a" && direction !== "RIGHT") direction = "LEFT";
-    if (e.key === "d" && direction !== "LEFT") direction = "RIGHT";
+    if (!canChangeDirection) return; 				// Controls + 1 Input per Frame //
+
+    if (e.key === "w" && direction !== "DOWN")
+	direction = "UP";
+	canChangeDirection = false;
+    if (e.key === "s" && direction !== "UP")
+	direction = "DOWN";
+	canChangeDirection = false;
+    if (e.key === "a" && direction !== "RIGHT")
+	direction = "LEFT";
+	canChangeDirection = false;
+    if (e.key === "d" && direction !== "LEFT")
+	direction = "RIGHT";
+	canChangeDirection = false;
 });
 
 function update() {
+    canChangeDirection = true;
     let head = { ...snake[0] };
 
     if (direction === "UP") head.y -= size;
@@ -57,8 +69,18 @@ function update() {
 
     // Essen
     if (head.x === food.x && head.y === food.y) {
-        food.x = Math.floor(Math.random() * 30) * size;
-        food.y = Math.floor(Math.random() * 30) * size;
+        let valid = false;					// check if place to spawn is already taken by snake //
+	while (!valid) {
+    	    food.x = Math.floor(Math.random() * 30) * size;
+            food.y = Math.floor(Math.random() * 30) * size;
+        valid = true;
+        for (let s of snake) {
+            if (food.x === s.x && food.y === s.y) {
+                valid = false;
+                break;
+            }
+        }
+    }
         score++;
         console.log("Score:", score);
     } else {
