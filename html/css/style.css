@@ -11,6 +11,27 @@ body {
     margin: 0;
     padding: 30px;
 }
+
+footer{
+position: relative;
+}
+
+.logo {
+width: 100px; 
+height: auto;
+display: inline-block;
+}
+.Git-logo { 
+width: 100px; 
+height: auto;
+display: inline-block;
+}
+.Git-logo-link { 
+position: absolute;
+left: +80px; 
+top: 50%;
+transform: translateY(+510%) ;
+}
 /* header row (h1 and logo) formatting */
 .header-row {
     position: relative;
@@ -24,14 +45,7 @@ body {
     position: absolute;
     left: -20px;
     top: 50%;
-    transform: translateY(-50%);
-}
-
-/* individual logo formatting/customization */
-.logo {
-    width: 170px;
-    height: auto;
-    display: inline-block;
+    transform: translateY(+510%);
 }
 
 /* individual h1 formatting/customization */
