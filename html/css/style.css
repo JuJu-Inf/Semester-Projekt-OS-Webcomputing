@@ -6,18 +6,18 @@
 
 body {
     font-family: PressStart2P;
-    background-color: #000000;
-    color: #FFFFFF	;
+    background-color: #280044;
+    color: #FFFFFF;
     margin: 0;
     padding: 30px;
 }
-
+/* header row (h1 and logo) formatting */
 .header-row {
     position: relative;
     text-align: center;
     margin-bottom: 20px;
     min-height: 80px;
-    padding: 0 180px;
+    padding: 0 140px;
 }
 
 .logo-link {
@@ -38,16 +38,17 @@ body {
 h1 {
     display: inline-block;
     background-color: #111111;
-    color: #FFFFFF;
-    padding: 15px 20px;
-    border-radius: 8px;
+    color: #a4ff88;
+    padding: 10px 20px;
+    border-radius: 15px;
     margin: 0;
 }
 
-/* wrapper (h1 and logo) formatting */
+/* wrapper (Input box) formatting */
 .wrapper {
-    max-width: 500px;
+    max-width:500px;
     margin: 30px auto;
+    color: #b5ff99;
     background-color: #111111;
     padding: 30px;
     border-radius: 10px;
@@ -83,15 +84,15 @@ button {
     padding: 12px;
     font-family: PressStart2P;
     font-size: 16px;
-    background-color: #222222;
-    color: white;
+    background-color: #333333;
+    color: #b5ff99;
     border: none;
     border-radius: 6px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #333333;
+    background-color: #444444;
 }
 
 #outputBox {

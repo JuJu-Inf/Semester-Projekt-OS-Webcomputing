@@ -32,7 +32,7 @@ print(f"""<!DOCTYPE html>
         <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
             <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
         </a>
-        <h1>Snake Game</h1>
+	<h1> Snake Game </h1>
     </div>
 
     <div class="game-wrapper">
