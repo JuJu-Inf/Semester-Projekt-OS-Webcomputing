@@ -75,9 +75,20 @@ input {
     padding: 10px;
     font-family: PressStart2P;
     font-size: 16px;
-    border: 1px solid #aaa;
+    color: #FFFFFF;
+    background-color: #333333;
+    border: 1px solid #AAAAAA;
     border-radius: 6px;
 }
+
+input:hover {
+    background-color: #444444;
+}
+
+input:focus {
+    background-color: #444444;
+}
+
 /* Submit button (Player Info) */
 button {
     margin-top: 10px;
