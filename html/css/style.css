@@ -10,10 +10,20 @@ body {
     color: #FFFFFF;
     margin: 0;
     padding: 30px;
+
+ /* Raster hinzufügen */
+    background-image:
+        linear-gradient(to right, rgba(164,255,136,0.1) 1px, transparent 5px),
+        linear-gradient(to left, rgba(164,255,136, 0.1) 1px, transparent 5px),
+	linear-gradient(to top, rgba(164,255,136,0.1) 1px, transparent 5px),
+        linear-gradient(to bottom, rgba(164,255,136,0.1) 1px, transparent 5px);
+    background-size: 80px 120px;
 }
 
 footer{
 position: relative;
+background-color: #333333;
+width: auto;
 }
 
 .logo {
@@ -26,12 +36,12 @@ width: 100px;
 height: auto;
 display: inline-block;
 }
-.Git-logo-link { 
+/*.Git-logo-link { 
 position: absolute;
 left: +80px; 
 top: 50%;
 transform: translateY(+510%) ;
-}
+}*/
 /* header row (h1 and logo) formatting */
 .header-row {
     position: relative;
@@ -41,12 +51,12 @@ transform: translateY(+510%) ;
     padding: 0 140px;
 }
 
-.logo-link {
-    position: absolute;
+/*.logo-link {
+    position: relative;
     left: -20px;
     top: 50%;
     transform: translateY(+510%);
-}
+}*/
 
 /* individual h1 formatting/customization */
 h1 {
