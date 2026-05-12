@@ -33,9 +33,6 @@ print(f"""<!DOCTYPE html>
 </head>
 <body>
     <div class="header-row">
-        <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
-            <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
-        </a>
 
         <h1>Übermittelte Daten</h1>
     </div>
@@ -53,6 +50,10 @@ print(f"""<!DOCTYPE html>
             <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
               <img  src="../images/GitHub_Logo.png" alt="TH Brandenburg logo" class="logo">
           </a>
+            <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
+              <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
+        </a>
+
         </p>
     </footer>
 </body>

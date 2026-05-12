@@ -5,12 +5,13 @@
 }
 
 body {
-    font-family: PressStart2P;
+    font-family: "PressStart2P";
     background-color: #280044;
     color: #FFFFFF;
-    margin: 0;
     padding: 30px;
-
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
  /* Raster hinzufügen */
     background-image:
         linear-gradient(to right, rgba(164,255,136,0.1) 1px, transparent 5px),
@@ -20,28 +21,30 @@ body {
     background-size: 80px 120px;
 }
 
+main{
+flex: 1;
+}
+
 footer{
-position: relative;
-background-color: #333333;
-width: auto;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: #333333;
+    padding: 10px;
 }
 
 .logo {
-width: 100px; 
+width: 100px;
 height: auto;
-display: inline-block;
 }
+
 .Git-logo { 
 width: 100px; 
 height: auto;
-display: inline-block;
 }
-/*.Git-logo-link { 
-position: absolute;
-left: +80px; 
-top: 50%;
-transform: translateY(+510%) ;
-}*/
+
 /* header row (h1 and logo) formatting */
 .header-row {
     position: relative;
@@ -50,13 +53,6 @@ transform: translateY(+510%) ;
     min-height: 80px;
     padding: 0 140px;
 }
-
-/*.logo-link {
-    position: relative;
-    left: -20px;
-    top: 50%;
-    transform: translateY(+510%);
-}*/
 
 /* individual h1 formatting/customization */
 h1 {
