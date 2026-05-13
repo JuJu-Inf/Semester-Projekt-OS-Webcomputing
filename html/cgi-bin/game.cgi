@@ -53,7 +53,10 @@ print(f"""<!DOCTYPE html>
           </a>
             <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
               <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
-        </a>
+          </a>
+            <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
+              <img src="../images/THB_logo.png" alt="about us logo" class="about-logo">
+          </a>
         </p>
     </footer>
 </body>
