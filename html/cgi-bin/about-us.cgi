@@ -26,10 +26,25 @@ print(f"""<!DOCTYPE html>
         <h1> About us</h1>
     </div>
 <main>
-kinda still empty but info about us is gonna be here soon
+
+<div class="wrapper-container">
+<div class="wrapper2">
+
+<p class="name-line"><span class="name">Patrick Radke</span></p>
+<p class="name-line"> picture going here </p>
+<p>-2nd Semester Computer Sience student at TH-Brandenburg</p>
+<p>-working on the website development for this project</p>
+</div>
+
+<div class="wrapper3">
+<p class="name-line"><span class="name">Julius Voigt</span></p>
+
+<p>-deinen Text kannste selber schreiben(im about-us.cgi)</p>
+</div>
+</div>
 </main>
     <footer>
-        <p>
+        <div class= "footer-logos">
             <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
                 <img src="../images/GitHub_Logo.png" alt="GitHub logo" class="logo">
             </a>
@@ -41,7 +56,7 @@ kinda still empty but info about us is gonna be here soon
             <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
                 <img src="../images/THB_logo.png" alt="About us logo" class="about-logo">
             </a>
-        </p>
+        </div>
     </footer>
 </body>
 </html>""")

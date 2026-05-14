@@ -33,21 +33,32 @@ footer{
     gap: 30px;
     background-color: #333333;
     padding: 10px;
+    }
+
+.footer-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
 }
 
+.footer-logos a {
+    display: inline-block;
+    text-decoration: none;
+}
 .logo {
-width: 100px;
-height: auto;
+    width: 100px;
+    height: auto;
 }
 
 .about-logo{ 
-width: 100px; 
-height: auto;
+    width: 100px; 
+    height: auto;
 }
 
 .Git-logo { 
-width: 100px; 
-height: auto;
+    width: 100px; 
+    height: auto;
 }
 
 /* header row (h1 and logo) formatting */
@@ -80,8 +91,37 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.wrapper-container {
+    display: flex;
+    justify-content: center; /* centers both wrappers as a group */
+    align-items: flex-start;
+    gap: 30px; /* space between wrappers */
+    flex-wrap: wrap;
+}
+
+.name {
+    text-decoration: underline;
+}
+
+.name-line{
+    text-align: center;
+}
+.wrapper2,
+.wrapper3 {
+    max-width: 500px;
+    width: 100%;
+    color: #b5ff99;
+    background-color: #111111;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: 0;
+    float: none;
+}
+
 label {
-   font-weight: bold;
+    font-weight: bold;
 }
 
 /* Formatting the input module */

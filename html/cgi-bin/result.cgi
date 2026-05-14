@@ -46,7 +46,7 @@ print(f"""<!DOCTYPE html>
     </div>
 
     <footer>
-        <p>
+         <div class= "footer-logos">
             <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
               <img  src="../images/GitHub_Logo.png" alt="TH Brandenburg logo" class="logo">
           </a>
@@ -56,7 +56,7 @@ print(f"""<!DOCTYPE html>
             <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
               <img src="../images/THB_logo.png" alt="about us logo" class="about-logo">
           </a>
-        </p>
+        </div>
     </footer>
 </body>
 </html>""")
