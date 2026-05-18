@@ -54,7 +54,7 @@ print(f"""<!DOCTYPE html>
               <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
           </a>
             <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
-              <img src="../images/THB_logo.png" alt="about us logo" class="about-logo">
+              <img src="../images/AboutUs_Logo.png" alt="about us logo" class="about-logo">
           </a>
         </div>
     </footer>

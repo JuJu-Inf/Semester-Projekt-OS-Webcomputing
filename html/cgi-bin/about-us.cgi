@@ -38,8 +38,9 @@ print(f"""<!DOCTYPE html>
 
 <div class="wrapper3">
 <p class="name-line"><span class="name">Julius Voigt</span></p>
-
-<p>-deinen Text kannste selber schreiben(im about-us.cgi)</p>
+<p class="name-line"> picture here </p>
+<p>- 2nd Semester Computer Science student at TH-Brandenburg</p>
+<p>- working on Snake-Game and Design for this project</p>
 </div>
 </div>
 </main>
@@ -54,7 +55,7 @@ print(f"""<!DOCTYPE html>
             </a>
 
             <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
-                <img src="../images/THB_logo.png" alt="About us logo" class="about-logo">
+                <img src="../images/AboutUs_Logo.png" alt="About us logo" class="about-logo">
             </a>
         </div>
     </footer>
