@@ -176,19 +176,36 @@ button:hover {
     margin-top: 20px;
 }
 
-body {
+game-page {
     margin: 0;
 }
 
-.game-wrapper {
-    width: 1050px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
+.game-page .game-wrapper {
+      position: relative;
+    width: 820px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
-.game-wrapper iframe {
+.game-page .game-wrapper iframe {
     display: block;
     border: none;
+}
+
+.game-page .score {
+    position: absolute;
+    top: 20px;
+    left: calc(100% + 30px);
+    width: 180px;
+    min-width: 180px;
+    padding: 20px;
+    background: #220044;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.game-page #scoreDisplay {
+  font-size: 2rem;
+  color: lime;
+  margin: 0;
 }

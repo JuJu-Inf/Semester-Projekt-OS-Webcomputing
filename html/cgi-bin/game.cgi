@@ -27,17 +27,20 @@ print(f"""<!DOCTYPE html>
     <title>Snake Game</title>
     <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
-<body>
+
+<body class="game-page">
     <div class="header-row">
 	<h1> Snake Game </h1>
     </div>
 
     <div class="game-wrapper">
-        <iframe src="../game_tests/test_game_in_Website.html" width="1050" height="1150" title="Snake Game"></iframe>
-
+        <iframe src="../game_tests/test_game_in_Website.html" width="820" height="820" title="Snake Game"></iframe>
+    <div class ="score">
+    <h2>Score</h2>
+    <p id="scoreDisplay">0</p>
     </div>
-
-    <div class="wrapper">
+</div>    
+<div class="wrapper">
         <form action="result.cgi" method="post">
             <input type="hidden" name="vorname" value="{vorname}">
             <input type="hidden" name="nachname" value="{nachname}">

@@ -9,16 +9,15 @@
 </style>
 </head>
 <body>
-<h1 style="text-align:center; color: white;"> Snake game </h1>
-<canvas id="game" width="1000" height="1000"
-	style="display:block; margin:auto; background:#111;">
+<canvas id="game" width="800" height="800" style="display:block; margin:auto; background:#111;">
 </canvas>
 
 <script>
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+const scoreDisplay = parent.document.getElementById("scoreDisplay");
 
-let snake = [{x: 300, y: 300}];
+let snake = [{x: 300, y: 300 }];
 let direction = "RIGHT";
 let food = {x: 100, y: 100};
 let size = 20;
@@ -52,7 +51,7 @@ function update() {
     if (direction === "RIGHT") head.x += size;
 
     // Wand-Kollision
-    if (head.x < 0 || head.y < 0 || head.x >= 1000 || head.y >= 1000) {
+    if (head.x < 0 || head.y < 0 || head.x >= canvas.width || head.y >= canvas.height) {
         reset();
         return;
     }
@@ -70,27 +69,33 @@ function update() {
     // Essen
     if (head.x === food.x && head.y === food.y) {
         let valid = false;					// check if place to spawn is already taken by snake //
-	while (!valid) {
-    	    food.x = Math.floor(Math.random() * 30) * size;
-            food.y = Math.floor(Math.random() * 30) * size;
+	
+        const cols = canvas.width / size;
+        const rows = canvas.height / size;
+    while (!valid) {
+    	    food.x = Math.floor(Math.random() * cols) * size;
+            food.y = Math.floor(Math.random() * rows) * size;
         valid = true;
         for (let s of snake) {
             if (food.x === s.x && food.y === s.y) {
                 valid = false;
                 break;
             }
-        }
+const scoreDisplay = document.getElementById("scoreDisplay");        }
     }
+
         score++;
-        console.log("Score:", score);
-    } else {
+        const scoreDisplay = parent.document.getElementById("scoreDisplay");
+        scoreDisplay.textContent = score;
+    }
+     else {
         snake.pop();
     }
 }
 
 function draw() {
     ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, 1000, 1000);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Snake
     ctx.fillStyle = "lime";
@@ -107,6 +112,7 @@ function reset() {
     snake = [{x: 300, y: 300}];
     direction = "RIGHT";
     score = 0;
+    scoreDisplay.textContent = score;
 }
 
 function gameLoop() {
