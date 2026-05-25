@@ -1,94 +1,123 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Snake Game</title>
 <style>
-    body { margin: 10px; background: #170033; }
-    canvas { display: block; margin: auto; background: #111; }
+    body {
+        margin: 10px;
+        background: #170033;
+    }
+
+    canvas {
+        display: block;
+        margin: auto;
+        background: #111;
+        border: 2px solid #444;
+    }
 </style>
 </head>
 <body>
-<canvas id="game" width="800" height="800" style="display:block; margin:auto; background:#111;">
-</canvas>
+<canvas id="game" width="800" height="800"></canvas>
 
 <script>
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
-const scoreDisplay = parent.document.getElementById("scoreDisplay");
 
-let snake = [{x: 300, y: 300 }];
-let direction = "RIGHT";
-let food = {x: 100, y: 100};
-let size = 20;
-let score = 0;
-let canChangeDirection = true;
+const size = 20;
+const cols = canvas.width / size;
+const rows = canvas.height / size;
 
-document.addEventListener("keydown", e => {
-    if (!canChangeDirection) return; 				// Controls + 1 Input per Frame //
+let snake;
+let direction;
+let food;
+let score;
+let canChangeDirection;
+let gameInterval;
 
-    if (e.key === "w" && direction !== "DOWN")
-	direction = "UP";
-	canChangeDirection = false;
-    if (e.key === "s" && direction !== "UP")
-	direction = "DOWN";
-	canChangeDirection = false;
-    if (e.key === "a" && direction !== "RIGHT")
-	direction = "LEFT";
-	canChangeDirection = false;
-    if (e.key === "d" && direction !== "LEFT")
-	direction = "RIGHT";
-	canChangeDirection = false;
-});
+function sendScore() {
+    window.parent.postMessage({
+        type: "scoreUpdate",
+        score: score
+    }, "*");
+}
+
+function sendGameOver() {
+    window.parent.postMessage({
+        type: "gameOver",
+        score: score
+    }, "*");
+}
+
+function placeFood() {
+    let valid = false;
+
+    while (!valid) {
+        food = {
+            x: Math.floor(Math.random() * cols) * size,
+            y: Math.floor(Math.random() * rows) * size
+        };
+
+        valid = true;
+
+        for (const s of snake) {
+            if (food.x === s.x && food.y === s.y) {
+                valid = false;
+                break;
+            }
+        }
+    }
+}
+
+function initGame() {
+    snake = [{ x: 300, y: 300 }];
+    direction = "RIGHT";
+    score = 0;
+    canChangeDirection = true;
+    placeFood();
+    sendScore();
+    draw();
+}
+
+function restartGame() {
+    initGame();
+}
+
+function gameOver() {
+    clearInterval(gameInterval);
+    sendGameOver();
+}
 
 function update() {
     canChangeDirection = true;
-    let head = { ...snake[0] };
+
+    const head = { ...snake[0] };
 
     if (direction === "UP") head.y -= size;
     if (direction === "DOWN") head.y += size;
     if (direction === "LEFT") head.x -= size;
     if (direction === "RIGHT") head.x += size;
 
-    // Wand-Kollision
     if (head.x < 0 || head.y < 0 || head.x >= canvas.width || head.y >= canvas.height) {
-        reset();
+        gameOver();
         return;
     }
 
-    // Selbst-Kollision
-    for (let s of snake) {
+    for (const s of snake) {
         if (head.x === s.x && head.y === s.y) {
-            reset();
+            gameOver();
             return;
         }
     }
 
     snake.unshift(head);
 
-    // Essen
     if (head.x === food.x && head.y === food.y) {
-        let valid = false;					// check if place to spawn is already taken by snake //
-	
-        const cols = canvas.width / size;
-        const rows = canvas.height / size;
-    while (!valid) {
-    	    food.x = Math.floor(Math.random() * cols) * size;
-            food.y = Math.floor(Math.random() * rows) * size;
-        valid = true;
-        for (let s of snake) {
-            if (food.x === s.x && food.y === s.y) {
-                valid = false;
-                break;
-            }
-const scoreDisplay = document.getElementById("scoreDisplay");        }
-    }
-
         score++;
-        const scoreDisplay = parent.document.getElementById("scoreDisplay");
-        scoreDisplay.textContent = score;
-    }
-     else {
+        sendScore();
+        placeFood();
+    } else {
         snake.pop();
     }
 }
@@ -97,22 +126,15 @@ function draw() {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Snake
     ctx.fillStyle = "lime";
-    for (let s of snake) {
+    for (const s of snake) {
         ctx.fillRect(s.x, s.y, size, size);
+        ctx.strokeStyle = "#0a0";
+        ctx.strokeRect(s.x, s.y, size, size);
     }
 
-    // Food
     ctx.fillStyle = "red";
     ctx.fillRect(food.x, food.y, size, size);
-}
-
-function reset() {
-    snake = [{x: 300, y: 300}];
-    direction = "RIGHT";
-    score = 0;
-    scoreDisplay.textContent = score;
 }
 
 function gameLoop() {
@@ -120,8 +142,45 @@ function gameLoop() {
     draw();
 }
 
-setInterval(gameLoop, 85);
-</script>
+document.addEventListener("keydown", function(e) {
+    if (!canChangeDirection) return;
 
+    const key = e.key.toLowerCase();
+
+    if (key === "w" && direction !== "DOWN") {
+        direction = "UP";
+        canChangeDirection = false;
+    } else if (key === "s" && direction !== "UP") {
+        direction = "DOWN";
+        canChangeDirection = false;
+    } else if (key === "a" && direction !== "RIGHT") {
+        direction = "LEFT";
+        canChangeDirection = false;
+    } else if (key === "d" && direction !== "LEFT") {
+        direction = "RIGHT";
+        canChangeDirection = false;
+    }
+});
+
+window.addEventListener("message", function(event) {
+    if (!event.data || typeof event.data !== "object") return;
+
+    if (event.data.type === "restartGame") {
+        clearInterval(gameInterval);
+        restartGame();
+        gameInterval = setInterval(gameLoop, 85);
+    }
+});
+
+window.addEventListener("load", function() {
+    window.focus();
+    document.body.addEventListener("click", function() {
+        window.focus();
+    });
+});
+
+initGame();
+gameInterval = setInterval(gameLoop, 85);
+</script>
 </body>
 </html>

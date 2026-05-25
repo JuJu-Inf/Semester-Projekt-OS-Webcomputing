@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import cgi
 import html
@@ -30,37 +31,68 @@ print(f"""<!DOCTYPE html>
 
 <body class="game-page">
     <div class="header-row">
-	<h1> Snake Game </h1>
+        <h1>Snake Game</h1>
     </div>
 
     <div class="game-wrapper">
-        <iframe src="../game_tests/test_game_in_Website.html" width="820" height="820" title="Snake Game"></iframe>
-    <div class ="score">
-    <h2>Score</h2>
-    <p id="scoreDisplay">0</p>
+        <iframe id="snakeFrame" src="../game_tests/test_game_in_Website.html" width="820" height="820" title="Snake Game"></iframe>
+
+        <div class="score">
+            <h2>Score</h2>
+            <p id="scoreDisplay">0</p>
+        </div>
     </div>
-</div>    
-<div class="wrapper">
-        <form action="result.cgi" method="post">
+
+    <div class="wrapper">
+        <form id="resultForm" action="result.cgi" method="post">
             <input type="hidden" name="vorname" value="{vorname}">
             <input type="hidden" name="nachname" value="{nachname}">
             <input type="hidden" name="email" value="{email}">
+            <input type="hidden" name="score" id="scoreInput" value="0">
             <button type="submit">Weiter zur Auswertung</button>
         </form>
     </div>
 
     <footer>
-         <div class= "footer-logos">
+        <div class="footer-logos">
             <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
-              <img  src="../images/GitHub_Logo.png" alt="TH Brandenburg logo" class="logo">
-          </a>
+                <img src="../images/GitHub_Logo.png" alt="GitHub logo" class="logo">
+            </a>
             <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
-              <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
-          </a>
+                <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
+            </a>
             <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
-              <img src="../images/AboutUs_Logo.png" alt="about us logo" class="about-logo">
-          </a>
+                <img src="../images/AboutUs_Logo.png" alt="About us logo" class="about-logo">
+            </a>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener("message", function(event) {{
+            if (!event.data || typeof event.data !== "object") return;
+
+            if (event.data.type === "scoreUpdate") {{
+                const latestScore = Number(event.data.score) || 0;
+                document.getElementById("scoreDisplay").textContent = latestScore;
+                document.getElementById("scoreInput").value = latestScore;
+            }}
+
+            if (event.data.type === "gameOver") {{
+                const latestScore = Number(event.data.score) || 0;
+                document.getElementById("scoreDisplay").textContent = latestScore;
+                document.getElementById("scoreInput").value = latestScore;
+
+                const retry = confirm(
+                    "Game Over!\\nDein Score: " + latestScore + "\\n\\nOK = Nochmal spielen\\nAbbrechen = Zur Scoreboard-Seite"
+                );
+
+                if (retry) {{
+                    document.getElementById("snakeFrame").contentWindow.postMessage({{ type: "restartGame" }}, "*");
+                }} else {{
+                    document.getElementById("resultForm").submit();
+                }}
+            }}
+        }});
+    </script>
 </body>
 </html>""")
