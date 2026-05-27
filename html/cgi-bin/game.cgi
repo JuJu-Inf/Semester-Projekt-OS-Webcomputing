@@ -56,13 +56,13 @@ print(f"""<!DOCTYPE html>
     <footer>
         <div class="footer-logos">
             <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
-                <img src="../images/GitHub_Logo.png" alt="GitHub logo" class="logo">
+                <img src="../images/GitHub_Logo.png" alt="GitHub logo" class="Git-logo">
             </a>
             <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
+                <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="THB-logo">
             </a>
-            <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
-                <img src="../images/AboutUs_Logo.png" alt="About us logo" class="about-logo">
+            <a href="about-us.cgi" class="logo-link">
+                <img src="../images/AboutUs_Logo.png" alt="About us logo" class="About-logo">
             </a>
         </div>
     </footer>

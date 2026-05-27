@@ -1,52 +1,78 @@
 <!DOCTYPE html>
+
 <html lang="de">
+
 <head>
-    <meta charset="UTF-8">
-    <!-- layout width relative to screen and load at 100% zoom -->
-    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
-    <!-- website title -->
-    <title>Homepage for Semesterproject</title>
-    <!-- referencing the css -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+	<meta charset="UTF-8">
+
+<!-- layout width relative to screen and load at 100% zoom -->
+
+	<meta name="viewport" content="width=device-width, initial-scale= 1.0">
+
+<!-- website title -->
+
+	<title>Homepage for Semesterproject</title>
+
+<!-- referencing the css -->
+
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+
 </head>
-    <!-- adding Logo and Header and putting them in the header-row class for later formatting -->
-<body>
-<div class="header-row">
-        <h1>Webcomputing and OS Project Dynamic Website</h1>
-    </div>
+
+<!-- adding Logo and Header and putting them in the header-row class for later formatting -->
+
+<body class="homepage">
+
+	<div class="header-row">
+        	<h1>Webcomputing and OS Project Dynamic Website</h1>
+    	</div>
+
 <main>
-    <!-- Information Input box and submit button -->
-    <div class="wrapper">
-        <form action="cgi-bin/game.cgi" method="post"> <!-- sends form to CGI Python script and method = "post" sends the values via HTTP Post-->
-            <label for="vorname">Vorname</label>
-            <input type="text" id="vorname" name="vorname" autocomplete="off">
 
-            <label for="nachname">Nachname</label>
-            <input type="text" id="nachname" name="nachname" autocomplete="off">
+<!-- Information Input box and submit button -->
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email"  autocomplete="off">
+	<div class="wrapper">
 
-            <button type="submit">Absenden</button>
-        </form>
-    </div>
+<!-- sends form to CGI Python script and method = "post" sends the values via HTTP Post-->
+
+        <form action="cgi-bin/game.cgi" method="post">
+
+		<label for="vorname">first name</label>
+            	<input type="text" id="vorname" name="vorname" autocomplete="off">
+
+            	<label for="nachname">last name</label>
+            	<input type="text" id="nachname" name="nachname" autocomplete="off">
+
+            	<label for="email">Email</label>
+            	<input type="email" id="email" name="email"  autocomplete="off">
+
+            	<button type="submit">submit</button>
+        </form> 	
+	</div>
 </main>
-<!--THB &  Git-hub Logo and repository link-->
 
 <footer>
- <div class= "footer-logos">
-    <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" class="Git-logo-link">
-        <img src="images/GitHub_Logo.png" alt="GitHub Logo" class="Git-logo">
-    </a>
 
-    <a href="https://www.th-brandenburg.de/" class="logo-link">
-        <img src="images/THB_logo.png" alt="TH Brandenburg Logo" class="logo">
-    </a>
+<!-- Footer for THB-Logo,Github-repository & about-us page-->
+	<div class= "footer-logos">
+
+ 		<a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer" class="logo-link">
+ 		<img src="images/GitHub_Logo.png" alt="GitHub Logo" class="Git-logo">
+    		</a>
+
+ 		<a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
+        	<img src="images/THB_logo.png" alt="TH Brandenburg Logo" class="THB-logo">
+    		</a>
     
-    <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
-        <img src="images/AboutUs_Logo.png" alt="about us logo" class="about-logo">
-    </a>
-</div>
+    		<a href="cgi-bin/about-us.cgi" class="logo-link">
+        	<img src="images/AboutUs_Logo.png" alt="about us logo" class="About-logo">
+    		</a>
+	
+<!-- '_blank' opens window in new tab --> 
+<!-- 'rel="noopener noreferre"' prevents browser and page from sending handle back and referrer information to destination -->
+	</div>
+
 </footer>
 </body>
 </html>

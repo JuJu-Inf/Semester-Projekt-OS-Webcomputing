@@ -69,57 +69,17 @@ print(f"""<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scoreboard</title>
     <link rel="stylesheet" href="../css/style.css" type="text/css">
-    <style>
-        .score-table {{
-            width: 100%;
-            max-width: 900px;
-            margin: 2rem auto;
-            border-collapse: collapse;
-        }}
-
-        .score-table th,
-        .score-table td {{
-            border: 1px solid #666;
-            padding: 12px;
-            text-align: left;
-        }}
-
-        .score-table th {{
-            background-color: #333333;
-            
-        }}
-
-        .score-table tr:nth-child(even) {{
-            background-color: #242424;
-        }}
-
-        .current-result {{
-            margin-bottom: 2rem;
-        }}
-
-        .button-row {{
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }}
-
-        .button-row form {{
-            margin: 0;
-        }}
-    </style>
 </head>
-<body>
+
+<body class="result-page">
     <div class="header-row">
         <h1>Scoreboard</h1>
     </div>
 
     <div class="wrapper">
         <div class="current-result">
-            <p><strong>Letzter Spieler:</strong> {vorname} {nachname}</p>
-            <p><strong>Email:</strong> {email}</p>
-            <p><strong>Letzter Score:</strong> {score}</p>
+            <p><strong>last player:</strong> {vorname} </p>
+            <p><strong>last score:</strong> {score}</p>
         </div>
 
         <div class="button-row">
@@ -127,8 +87,8 @@ print(f"""<!DOCTYPE html>
                 <button type="submit">back to the start</button>
             </form>
 
-            <form action="result.cgi" method="post" onsubmit="return confirm('Scoreboard wirklich zurücksetzen?');">
-                <input type="hidden" name="action" value="reset">
+            <form action="result.cgi" method="post" onsubmit="return confirm('are you sure you want to reset the scoreboard?');">
+<!-- sends form to CGI Python script and method = "post" sends the values via HTTP Post-->                <input type="hidden" name="action" value="reset">
                 <button type="submit">reset Scoreboard</button>
             </form>
         </div>
@@ -139,8 +99,8 @@ print(f"""<!DOCTYPE html>
                 <th>Nachname</th>
                 <th>Email</th>
                 <th>Score</th>
-            </tr>
-""")
+
+</tr>""")
 
 for row in data_rows:
     row_vorname = html.escape(row[0])
@@ -151,7 +111,7 @@ for row in data_rows:
     print(f"""            <tr>
                 <td>{row_vorname}</td>
                 <td>{row_nachname}</td>
-                <td>{row_email}</td>   
+                <td>{row_email}</td>
                 <td>{row_score}</td>
             </tr>""")
 
@@ -162,13 +122,13 @@ print("""
     <footer>
          <div class="footer-logos">
             <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
-              <img src="../images/GitHub_Logo.png" alt="GitHub logo" class="logo">
+              <img src="../images/GitHub_Logo.png" alt="GitHub logo" class="Git-logo">
             </a>
             <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
-              <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="logo">
+              <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="THB-logo">
             </a>
-            <a href="http://pan.th-brandenburg.de/~radkep/cgi-bin/about-us.cgi" class="logo-link">
-              <img src="../images/AboutUs_Logo.png" alt="about us logo" class="about-logo">
+            <a href="about-us.cgi" class="logo-link">
+              <img src="../images/AboutUs_Logo.png" alt="about us logo" class="About-logo">
             </a>
         </div>
     </footer>
