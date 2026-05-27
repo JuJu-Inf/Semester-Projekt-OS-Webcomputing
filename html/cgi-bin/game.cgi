@@ -35,7 +35,7 @@ print(f"""<!DOCTYPE html>
     </div>
 
     <div class="game-wrapper">
-        <iframe id="snakeFrame" src="../game_tests/test_game_in_Website.html" width="820" height="820" title="Snake Game"></iframe>
+        <iframe id="snakeFrame" src="../game_tests/test_game_in_Website.html" width="820" height="820" scrolling="no" title="Snake Game"></iframe>
 
         <div class="score">
             <h2>Score</h2>

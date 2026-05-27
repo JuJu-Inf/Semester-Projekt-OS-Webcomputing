@@ -190,6 +190,7 @@ game-page {
 .game-page .game-wrapper iframe {
     display: block;
     border: none;
+    overflow: hidden;
 }
 
 .game-page .score {

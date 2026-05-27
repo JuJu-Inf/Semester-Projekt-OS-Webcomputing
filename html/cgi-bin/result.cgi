@@ -151,7 +151,7 @@ for row in data_rows:
     print(f"""            <tr>
                 <td>{row_vorname}</td>
                 <td>{row_nachname}</td>
-                <td>{row_email}</td>
+                <td>{row_email}</td>   
                 <td>{row_score}</td>
             </tr>""")
 

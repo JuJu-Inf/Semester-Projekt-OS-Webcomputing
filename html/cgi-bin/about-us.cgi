@@ -43,6 +43,11 @@ print(f"""<!DOCTYPE html>
 <p>- working on Snake-Game and Design for this project</p>
 </div>
 </div>
+
+<div class="wrapper">
+        <form action="../project.html" method="post">
+            <button type="submit">back</button>
+</div>
 </main>
     <footer>
         <div class= "footer-logos">
