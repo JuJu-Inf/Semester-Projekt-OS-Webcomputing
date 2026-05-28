@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import cgi
 import html
 import sys
+
+#tells python script to print characters in UTF-8 encoding 
 
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -14,55 +15,75 @@ print("Content-Type: text/html; charset=utf-8")
 print()
 
 print(f"""<!DOCTYPE html>
+
 <html lang="de">
+
+<!-- setting parameters for Website -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> About us page</title>
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> About us page</title>
+	<link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
+
+<!-- header for Website -->
 <body class="about-us">
-    <div class="header-row">
-        <h1> About us</h1>
-    </div>
+	<div class="header-row">
+		<h1> About us</h1>
+    	</div>
+
 <main>
 
+<!-- a wrapper container holding both wrappers of this site for easy formatting -->
+
 <div class="wrapper-container">
+
+<!-- wrappers for programmer info -->
+
 <div class="wrapper2">
 
-<p class="center-text"><span class="name">Patrick Radke</span></p>
-<p class="center-text"> picture going here </p>
-<p>-2nd Semester Computer Sience student at TH-Brandenburg</p>
-<p>-working on the website development for this project</p>
+	<p class="center-text"><span class="name">Patrick Radke</span></p>
+	<p class="center-text"> picture going here </p>
+	<p>-2nd Semester Computer Sience student at TH-Brandenburg</p>
+	<p>-working on the website development for this project</p>
+
 </div>
 
 <div class="wrapper3">
-<p class="center-text"><span class="name">Julius Voigt</span></p>
-<p class="center-text"> picture here </p>
-<p>- 2nd Semester Computer Science student at TH-Brandenburg</p>
-<p>- working on Snake-Game and Design for this project</p>
+	<p class="center-text"><span class="name">Julius Voigt</span></p>
+	<p class="center-text"> picture here </p>
+	<p>- 2nd Semester Computer Science student at TH-Brandenburg</p>
+	<p>- working on Snake-Game and Design for this project</p>
 </div>
+
 </div>
+
+<!-- button to go back to the Homepage using standard wrapper to format -->
 
 <div class="wrapper">
-        <form action="../project.html" method="post">
-            <button type="submit">back</button>
+	<form action="../project.html" method="post">
+	<button type="submit">back</button>
 </div>
+
 </main>
+
+<!-- Footer for THB-Logo,Github-repository & about-us page-->
+
     <footer>
-        <div class= "footer-logos">
-            <a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="../images/GitHub_Logo.png" alt="GitHub logo" class="Git-logo">
-            </a>
+	<div class= "footer-logos">
+		<a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer" class="logo-link">
+		<img src="../images/GitHub_Logo.png" alt="GitHub logo" class="Git-logo">
+            	</a>
 
-            <a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
+           	<a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
                 <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="THB-logo">
-            </a>
+            	</a>
 
-            <a href="about-us.cgi" class="logo-link">
+            	<a href="about-us.cgi" class="logo-link">
                 <img src="../images/AboutUs_Logo.png" alt="about us logo" class="About-logo">
-            </a>
-        </div>
+            	</a>
+       </div>
 
 </body>
 </html>""")

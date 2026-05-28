@@ -65,56 +65,60 @@ print()
 print(f"""<!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoreboard</title>
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scoreboard</title>
+	<link rel="stylesheet" href="../css/style.css" type="text/css">
+
 </head>
 
 <body class="result-page">
-    <div class="header-row">
-        <h1>Scoreboard</h1>
-    </div>
+	<div class="header-row">
+		<h1>Scoreboard</h1>
+	</div>
 
     <div class="wrapper">
         <div class="current-result">
-            <p><strong>last player:</strong> {vorname} </p>
+        
+	    <p><strong>last player:</strong> {vorname} </p>
             <p><strong>last score:</strong> {score}</p>
-        </div>
+        
+	</div>
 
         <div class="button-row">
-            <form action="../project.html" method="get">
-                <button type="submit">back to the start</button>
-            </form>
+       
+		<form action="../project.html" method="get">
+		<button type="submit">back to the start</button>
+            	</form>
 
-            <form action="result.cgi" method="post" onsubmit="return confirm('are you sure you want to reset the scoreboard?');">
+            	<form action="result.cgi" method="post" onsubmit="return confirm('are you sure you want to reset the scoreboard?');">
+
 <!-- sends form to CGI Python script and method = "post" sends the values via HTTP Post--> 
-               <input type="hidden" name="action" value="reset">
-               <button type="submit">reset Scoreboard</button>
-            </form>
+               	
+		<input type="hidden" name="action" value="reset">
+               	<button type="submit">reset Scoreboard</button>
+            	</form>
         </div>
 
-        <table class="score-table">
-            <tr>
-                <th>Vorname</th>
-                <th>Nachname</th>
-                <th>Email</th>
-                <th>Score</th>
-
-</tr>""")
+<table class="score-table">
+	<tr>
+        	<th>Vorname</th>
+        	<th>Nachname</th>
+		<th>Score</th>
+	</tr>""")
 
 for row in data_rows:
     row_vorname = html.escape(row[0])
     row_nachname = html.escape(row[1])
-    row_email = html.escape(row[2])
-    row_score = html.escape(row[3])
+    row_score = html.escape(row[2])
 
-    print(f"""            <tr>
-                <td>{row_vorname}</td>
-                <td>{row_nachname}</td>
-                <td>{row_email}</td>
-                <td>{row_score}</td>
-            </tr>""")
+    print(f"""            
+	<tr>
+		<td>{row_vorname}</td>
+		<td>{row_nachname}</td>
+		<td>{row_score}</td>
+	</tr>""")
 
 print("""
         </table>
