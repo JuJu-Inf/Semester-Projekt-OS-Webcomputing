@@ -3,11 +3,7 @@
 
 import cgi
 import html
-import sys
 
-#tells python script to print characters in UTF-8 encoding 
-
-sys.stdout.reconfigure(encoding="utf-8")
 
 form = cgi.FieldStorage()
 
@@ -31,7 +27,7 @@ print(f"""<!DOCTYPE html>
 <body class="about-us">
 	<div class="header-row">
 		<h1> About us</h1>
-    	</div>
+	</div>
 
 <main>
 
@@ -43,16 +39,16 @@ print(f"""<!DOCTYPE html>
 
 <div class="wrapper2">
 
-	<p class="center-text"><span class="name">Patrick Radke</span></p>
-	<p class="center-text"> picture going here </p>
+	<p class="center-text"><span class="underline">Patrick Radke</span></p>
 	<p>-2nd Semester Computer Sience student at TH-Brandenburg</p>
-	<p>-working on the website development for this project</p>
+	<p>-Website frontend-development for this project</p>
+	<p>-<span class="underline">GitHub</span>:</p>
+	<p>-<a href="https://github.com/JuJu-Inf" target="_blank" rel="noopener noreferrer">Patrick Radke / JuJu-Inf</a></p>
 
 </div>
 
 <div class="wrapper3">
-	<p class="center-text"><span class="name">Julius Voigt</span></p>
-	<p class="center-text"> picture here </p>
+	<p class="center-text"><span class="underline">Julius Voigt</span></p>
 	<p>- 2nd Semester Computer Science student at TH-Brandenburg</p>
 	<p>- working on Snake-Game and Design for this project</p>
 </div>
@@ -68,22 +64,23 @@ print(f"""<!DOCTYPE html>
 
 </main>
 
-<!-- Footer for THB-Logo,Github-repository & about-us page-->
+<footer>
 
-    <footer>
+<!--·Footer·for·THB-Logo,Github-repository·&·about-us·page-->
+
 	<div class= "footer-logos">
 		<a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer" class="logo-link">
 		<img src="../images/GitHub_Logo.png" alt="GitHub logo" class="Git-logo">
-            	</a>
+		</a>
 
-           	<a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="THB-logo">
-            	</a>
+		<a href="https://www.th-brandenburg.de/" target="_blank" rel="noopener noreferrer" class="logo-link">
+		<img src="../images/THB_logo.png" alt="TH Brandenburg logo" class="THB-logo">
+		</a>
 
-            	<a href="about-us.cgi" class="logo-link">
-                <img src="../images/AboutUs_Logo.png" alt="about us logo" class="About-logo">
-            	</a>
-       </div>
+		<a href="about-us.cgi" class="logo-link">
+		<img src="../images/AboutUs_Logo.png" alt="about us logo" class="About-logo">
+		</a>
+	</div>
 
 </body>
 </html>""")

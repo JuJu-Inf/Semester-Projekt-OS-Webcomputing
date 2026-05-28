@@ -1,24 +1,16 @@
  <!DOCTYPE html>
 <html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snake Game</title>
-<style>
-    body {
-        margin: 10px;
-        background: #170033;
-    }
 
-    canvas {
-        display: block;
-        margin: auto;
-        background: #111;
-        border: 2px solid #444;
-    }
-</style>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Snake Game</title>
+
 </head>
-<body>
+<body class= "game">
 <canvas id="game" width="800" height="800"></canvas>
 
 <script>
@@ -37,146 +29,155 @@ let canChangeDirection;
 let gameInterval;
 
 function sendScore() {
-    window.parent.postMessage({
-        type: "scoreUpdate",
-        score: score
-    }, "*");
+	window.parent.postMessage({
+		type: "scoreUpdate",
+		score: score
+	}, "*");
 }
 
 function sendGameOver() {
-    window.parent.postMessage({
-        type: "gameOver",
-        score: score
-    }, "*");
+	window.parent.postMessage({
+		type: "gameOver",
+		score: score
+	}, "*");
 }
 
 function placeFood() {
-    let valid = false;
+	let valid = false;
 
-    while (!valid) {
-        food = {
-            x: Math.floor(Math.random() * cols) * size,
-            y: Math.floor(Math.random() * rows) * size
-        };
+	while (!valid) {
+	food = {
+		x: Math.floor(Math.random() * cols) * size,
+		y: Math.floor(Math.random() * rows) * size
+	};
 
-        valid = true;
+	valid = true;
 
-        for (const s of snake) {
-            if (food.x === s.x && food.y === s.y) {
-                valid = false;
-                break;
-            }
-        }
-    }
+	for (const s of snake) {
+		if (food.x === s.x && food.y === s.y) {
+			valid = false;
+			break;
+		}
+	}
+	}
 }
 
 function initGame() {
-    snake = [{ x: 300, y: 300 }];
-    direction = "RIGHT";
-    score = 0;
-    canChangeDirection = true;
-    placeFood();
-    sendScore();
-    draw();
+	snake = [{ x: 300, y: 300 }];
+	direction = "RIGHT";
+	score = 0;
+	canChangeDirection = true;
+	placeFood();
+	sendScore();
+	draw();
 }
 
 function restartGame() {
-    initGame();
+	initGame();
 }
 
 function gameOver() {
-    clearInterval(gameInterval);
-    sendGameOver();
+	clearInterval(gameInterval);
+	sendGameOver();
 }
 
 function update() {
-    canChangeDirection = true;
+	canChangeDirection = true;
 
-    const head = { ...snake[0] };
+	const head = { ...snake[0] };
 
-    if (direction === "UP") head.y -= size;
-    if (direction === "DOWN") head.y += size;
-    if (direction === "LEFT") head.x -= size;
-    if (direction === "RIGHT") head.x += size;
+	if (direction === "UP") head.y -= size;
+	if (direction === "DOWN") head.y += size;
+	if (direction === "LEFT") head.x -= size;
+	if (direction === "RIGHT") head.x += size;
 
-    if (head.x < 0 || head.y < 0 || head.x >= canvas.width || head.y >= canvas.height) {
-        gameOver();
-        return;
-    }
+	if (head.x < 0 || head.y < 0 || head.x >= canvas.width || head.y >= canvas.height) {
+		gameOver();
+		return;
+	}
 
-    for (const s of snake) {
-        if (head.x === s.x && head.y === s.y) {
-            gameOver();
-            return;
-        }
-    }
+	for (const s of snake) {
+		if (head.x === s.x && head.y === s.y) {
+			gameOver();
+			return;
+		}
+	}
 
-    snake.unshift(head);
+	snake.unshift(head);
 
-    if (head.x === food.x && head.y === food.y) {
-        score++;
-        sendScore();
-        placeFood();
-    } else {
-        snake.pop();
-    }
+	if (head.x === food.x && head.y === food.y) {
+		score++;
+		sendScore();
+		placeFood();
+	}
+
+	else {
+		snake.pop();
+	}
 }
 
 function draw() {
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+	ctx.fillStyle = "black";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = "lime";
-    for (const s of snake) {
-        ctx.fillRect(s.x, s.y, size, size);
-        ctx.strokeStyle = "#0a0";
-        ctx.strokeRect(s.x, s.y, size, size);
-    }
+	ctx.fillStyle = "lime";
 
-    ctx.fillStyle = "red";
-    ctx.fillRect(food.x, food.y, size, size);
-}
+	for (const s of snake) {
+		ctx.fillRect(s.x, s.y, size, size);
+		ctx.strokeStyle = "#0a0";
+		ctx.strokeRect(s.x, s.y, size, size);
+	}
+
+	ctx.fillStyle = "red";
+	ctx.fillRect(food.x, food.y, size, size);
+	}
 
 function gameLoop() {
-    update();
-    draw();
+	update();
+	draw();
 }
 
 document.addEventListener("keydown", function(e) {
-    if (!canChangeDirection) return;
+	if (!canChangeDirection) return;
 
-    const key = e.key.toLowerCase();
+	const key = e.key.toLowerCase();
 
-    if (key === "w" && direction !== "DOWN") {
-        direction = "UP";
-        canChangeDirection = false;
-    } else if (key === "s" && direction !== "UP") {
-        direction = "DOWN";
-        canChangeDirection = false;
-    } else if (key === "a" && direction !== "RIGHT") {
-        direction = "LEFT";
-        canChangeDirection = false;
-    } else if (key === "d" && direction !== "LEFT") {
-        direction = "RIGHT";
-        canChangeDirection = false;
-    }
+	if (key === "w" && direction !== "DOWN") {
+		direction = "UP";
+		canChangeDirection = false;
+	}
+	
+	else if (key === "s" && direction !== "UP") {
+		direction = "DOWN";
+		canChangeDirection = false;
+	}
+
+	else if (key === "a" && direction !== "RIGHT") {
+		direction = "LEFT";
+		canChangeDirection = false;
+	}
+
+	else if (key === "d" && direction !== "LEFT") {
+		direction = "RIGHT";
+		canChangeDirection = false;
+	}
 });
 
 window.addEventListener("message", function(event) {
-    if (!event.data || typeof event.data !== "object") return;
+	if (!event.data || typeof event.data !== "object") return;
 
-    if (event.data.type === "restartGame") {
-        clearInterval(gameInterval);
-        restartGame();
-        gameInterval = setInterval(gameLoop, 85);
-    }
+		if (event.data.type === "restartGame") {
+			clearInterval(gameInterval);
+			restartGame();
+			gameInterval = setInterval(gameLoop, 85);
+	}
 });
 
 window.addEventListener("load", function() {
-    window.focus();
-    document.body.addEventListener("click", function() {
-        window.focus();
-    });
+	window.focus();
+	document.body.addEventListener("click", function() {
+	window.focus();
+	});
 });
 
 initGame();

@@ -5,28 +5,28 @@
 /* implementing/loading the custom font */
 
 @font-face {
-        font-family: "PressStart2P";
-        src: url("../font/PressStart2P-Regular.ttf") format("truetype")
+	font-family: "PressStart2P";
+	src: url("../font/PressStart2P-Regular.ttf") format("truetype")
 }
 
 body {
-        font-family: "PressStart2P";
-        background-color: #280044;
-        color: #FFFFFF;
-        padding: 30px;
-        min-height: 96vh;
-        display: flex;
-        flex-direction: column;
+	font-family: "PressStart2P";
+	background-color: #280044;
+	color: #FFFFFF;
+	padding: 30px;
+	min-height: 96vh;
+	display: flex;
+	flex-direction: column;
 	overflow: hidden;
- 
+
 /* gradient background effect */
 
-        background-size: 80px 120px;
-        background-image:
-                linear-gradient(to right, rgba(164,255,136,0.1) 1px, transparent 5px),
-                linear-gradient(to left, rgba(164,255,136, 0.1) 1px, transparent 5px),
-                linear-gradient(to top, rgba(164,255,136,0.1) 1px, transparent 5px),
-                linear-gradient(to bottom, rgba(164,255,136,0.1) 1px, transparent 5px);
+	background-size: 80px 120px;
+	background-image:
+		linear-gradient(to right, rgba(164,255,136,0.1) 1px, transparent 5px),
+		linear-gradient(to left, rgba(164,255,136, 0.1) 1px, transparent 5px),
+		linear-gradient(to top, rgba(164,255,136,0.1) 1px, transparent 5px),
+		linear-gradient(to bottom, rgba(164,255,136,0.1) 1px, transparent 5px);
 }
 
 main {
@@ -36,9 +36,9 @@ main {
 /* formatting of the footer */
 
 footer {
-        margin-top: auto;
-        background-color: #333333;
-        padding: 10px;
+	margin-top: auto;
+	background-color: #333333;
+	padding: 10px;
 }
 
 /* formatting of the logos in the footer */
@@ -70,43 +70,43 @@ footer {
 /* individual h1 customization */
 
 h1 {
-        display: inline-block;
-        background-size: 80px 120px;    
-        background-color: #111111;
-        color: #a4ff88;
-        padding: 10px 20px;
-        border-radius: 15px;
-        margin: 0;
+	display: inline-block;
+	background-size: 80px 120px;
+	background-color: #111111;
+	color: #a4ff88;
+	padding: 10px 20px;
+	border-radius: 15px;
+	margin: 0;
 }
 
 /* wrapper (Input box) formatting */
 
 .wrapper {
-        max-width:500px;
-        margin: 30px auto;
-        color: #b5ff99;
-        background-color: #111111;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width:500px;
+	margin: 30px auto;
+	color: #b5ff99;
+	background-color: #111111;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* button stylization */
 
 button {
-        margin-top: 10px;
-        padding: 12px;
-        font-family: PressStart2P;
-        font-size: 16px;
-        background-color: #333333;
-        color: #b5ff99;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
+	margin-top: 10px;
+	padding: 12px;
+	font-family: PressStart2P;
+	font-size: 16px;
+	background-color: #333333;
+	color: #b5ff99;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
 }
 
 button:hover {
-        background-color: #444444;
+	background-color: #444444;
 }
 
 
@@ -116,33 +116,33 @@ button:hover {
 
 
 .homepage .label {
-        font-weight: bold;
+	font-weight: bold;
 }
 
 /* Formatting the input module */
 
 .homepage form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .homepage input {
-        padding: 10px;
-        font-family: PressStart2P;
-        font-size: 16px;
-        color: #FFFFFF;
-        background-color: #333333;
-        border: 1px solid #AAAAAA;
-        border-radius: 6px;
+	padding: 10px;
+	font-family: PressStart2P;
+	font-size: 16px;
+	color: #FFFFFF;
+	background-color: #333333;
+	border: 1px solid #AAAAAA;
+	border-radius: 6px;
 }
 
 .homepage input:hover {
-        background-color: #444444;
+	background-color: #444444;
 }
 
 .homepage input:focus {
-        background-color: #444444;
+	background-color: #444444;
 }
 
 
@@ -163,21 +163,21 @@ button:hover {
 /* stylizing both wrappers */
 
 .about-us .wrapper2, .wrapper3 {
-        max-width: 500px;
-        width: 100%;
-        color: #b5ff99;
-        background-color: #111111;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: left;
-        margin: 0;
-        float: none;
+	max-width: 500px;
+	width: 100%;
+	color: #b5ff99;
+	background-color: #111111;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	text-align: left;
+	margin: 0;
+	float: none;
 }
 
 /* stylizing contributors names */
 
-.about-us .name {
+.about-us .underline {
 	text-decoration: underline;
 }
 
@@ -186,9 +186,27 @@ button:hover {
 }
 
 .about-us form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+
+
+/*       game-page stylization        */
+
+
+
+.game .body·{
+	margin:·10px;
+	background:·#170033;
+}
+
+.game .canvas·{
+	display:·block;
+	margin:·auto;
+	background:·#111;
+	border:·2px·solid·#444;
 }
 
 
