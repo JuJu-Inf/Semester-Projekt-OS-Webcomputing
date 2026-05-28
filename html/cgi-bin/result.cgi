@@ -88,8 +88,9 @@ print(f"""<!DOCTYPE html>
             </form>
 
             <form action="result.cgi" method="post" onsubmit="return confirm('are you sure you want to reset the scoreboard?');">
-<!-- sends form to CGI Python script and method = "post" sends the values via HTTP Post-->                <input type="hidden" name="action" value="reset">
-                <button type="submit">reset Scoreboard</button>
+<!-- sends form to CGI Python script and method = "post" sends the values via HTTP Post--> 
+               <input type="hidden" name="action" value="reset">
+               <button type="submit">reset Scoreboard</button>
             </form>
         </div>
 
