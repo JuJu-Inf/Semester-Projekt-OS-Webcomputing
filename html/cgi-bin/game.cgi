@@ -44,7 +44,7 @@ print(f"""<!DOCTYPE html>
 <body class="game-page">
 
 	<div class="header-row">
-		<h1>Snake Game</h1>
+		<h1>Arcade Game</h1>
 	</div>
 
 <!-- draw iframe for game display -->

@@ -17,7 +17,6 @@ body {
 	min-height: 96vh;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
 
 /* gradient background effect */
 
@@ -77,6 +76,7 @@ h1 {
 	padding: 10px 20px;
 	border-radius: 15px;
 	margin: 0;
+	text-decoration: underline;
 }
 
 /* wrapper (Input box) formatting */
@@ -114,6 +114,9 @@ button:hover {
 /*	Homepage stylization	*/
 
 
+.homepage {
+	overflow: hidden;
+}
 
 .homepage .label {
 	font-weight: bold;
@@ -152,6 +155,11 @@ button:hover {
 
 
 /* formatting container which holds both wrappers */
+
+.about-us {
+	overflow: hidden;
+}
+
 .about-us .wrapper-container {
 	display: flex;
 	justify-content: center; /* centers both wrappers as a group */
@@ -197,6 +205,10 @@ button:hover {
 
 
 
+game-page {
+        margin: 0;
+}
+
 .game .body·{
 	margin:·10px;
 	background:·#170033;
@@ -207,16 +219,6 @@ button:hover {
 	margin:·auto;
 	background:·#111;
 	border:·2px·solid·#444;
-}
-
-
-
-/*       game-page stylization        */
-
-
-
-game-page {
-	margin: 0;
 }
 
 .game-page .game-wrapper {
@@ -255,6 +257,10 @@ game-page {
 /*	 result-page stylization	*/
 
 
+
+.result-page {
+	overflow: hidden;
+}
 
 .result-page .score-table {
 	width: 100%;

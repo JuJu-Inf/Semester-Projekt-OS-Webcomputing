@@ -86,7 +86,7 @@ print(f"""<!DOCTYPE html>
 <body class="result-page">
 
 	<div class="header-row">
-		<h1>Scoreboard</h1>
+		<h1>Results</h1>
 	</div>
 
 	<div class="wrapper">
