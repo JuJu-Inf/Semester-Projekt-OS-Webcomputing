@@ -47,8 +47,12 @@ print(f"""<!DOCTYPE html>
 		<h1>Snake Game</h1>
 	</div>
 
+<!-- draw iframe for game display -->
+
 	<div class="game-wrapper">
 		<iframe id="snakeFrame" src="../game/game-file.html" width="820" height="820" scrolling="no" title="Snake Game"></iframe>
+
+<!-- show score next to iframe -->
 
 	<div class="score">
 		<h2>Score</h2>
@@ -68,7 +72,7 @@ print(f"""<!DOCTYPE html>
 
 <footer>
 
-<!--·Footer·for·THB-Logo,Github-repository·&·about-us·page-->
+<!--·Footer·for·THB-Logo, Github-repository·&·about-us·page-->
 
 	<div class="footer-logos">
 		<a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
