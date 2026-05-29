@@ -40,10 +40,11 @@ print(f"""<!DOCTYPE html>
 <div class="wrapper2">
 
 	<p class="center-text"><span class="underline">Patrick Radke</span></p>
-	<p>-2nd Semester Computer Sience student at TH-Brandenburg</p>
-	<p>-Website frontend-development for this project</p>
-	<p>-<span class="underline">GitHub</span>:</p>
-	<p>-<a href="https://github.com/JuJu-Inf" target="_blank" rel="noopener noreferrer">Patrick Radke / JuJu-Inf</a></p>
+	<p>- 2nd Semester Computer Sience student at TH-Brandenburg</p>
+	<p>- Matrikel Nr.: 20248227
+	<p>- Website frontend/python script development for this project</p>
+	<p>- <span class="underline">GitHub</span>:</p>
+	<p><a href="https://github.com/JuJu-Inf" target="_blank" rel="noopener noreferrer">Patrick Radke / JuJu-Inf</a></p>
 
 </div>
 
