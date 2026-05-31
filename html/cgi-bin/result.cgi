@@ -33,39 +33,54 @@ if nachname_raw == "":
 if email_raw == "":
 	email_raw = "not given"
 
+#converts score from text (from CSV file) to integer
+
 try:
 	score_value = int(score_raw)
+
+#fallback if conversion fails and python gives back a ValueError
+
 except ValueError:
 	score_value = 0
 
+#finds the path of the csv file
+
 csv_file = os.path.join(os.path.dirname(__file__), "scores.csv")
 
-if not os.path.exists(csv_file):
-	with open(csv_file, "w", newline="", encoding="utf-8") as f:
-		writer = csv.writer(f)
-		writer.writerow(["Vorname", "Nachname", "Email", "Score"])
+#clears CSV file and writes the 'Header-line' again
 
 if action == "reset":
 	with open(csv_file, "w", newline="", encoding="utf-8") as f:
 		writer = csv.writer(f)
-		writer.writerow(["Vorname", "Nachname", "Email", "Score"])
+		writer.writerow(["Vorname", "Nachname", "Score"])
+
+#add new score entry
+
 else:
 	with open(csv_file, "a", newline="", encoding="utf-8") as f:
 		writer = csv.writer(f)
-		writer.writerow([vorname_raw, nachname_raw, email_raw, score_value])
+		writer.writerow([vorname_raw, nachname_raw, score_value])
+
+#reads all entrys from the csv into memory
 
 rows = []
 with open(csv_file, "r", newline="", encoding="utf-8") as f:
 	reader = csv.reader(f)
 	rows = list(reader)
 
+#takes all rows but the header-line
+
 data_rows = rows[1:]
-data_rows.sort(key=lambda row: int(row[3]), reverse=True)
+
+#sort function from higest to lowest score (row[2])
+
+data_rows.sort(key=lambda row: int(row[2]), reverse=True)
+
+#safe display for HTML
 
 vorname = html.escape(vorname_raw)
 nachname = html.escape(nachname_raw)
-email = html.escape(email_raw)
-score = html.escape(str(score_value))
+score = html.escape(str(score_value))  #html.escape needs text not number -> score_value casted to string
 
 print("Content-Type: text/html; charset=utf-8")
 print()
@@ -111,6 +126,8 @@ print(f"""<!DOCTYPE html>
 		</form>
 	</div>
 
+<!-- prints header row of the scoreboard -->
+
 <table class="score-table">
 	<tr>
 		<th>Vorname</th>
@@ -120,10 +137,12 @@ print(f"""<!DOCTYPE html>
 
 #dont change the indentation until footer otherwise the reset function breaks completely
 
+#go through each row in the csv file take out the values and print them
+
 for row in data_rows:
     row_vorname = html.escape(row[0])
     row_nachname = html.escape(row[1])
-    row_score = html.escape(row[3])
+    row_score = html.escape(row[2])
 
     print(f"""
 	<tr>
