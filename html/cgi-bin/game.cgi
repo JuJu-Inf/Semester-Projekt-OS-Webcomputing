@@ -16,8 +16,6 @@ vorname = html.escape(form.getfirst("vorname", "").strip())
 nachname = html.escape(form.getfirst("nachname", "").strip())
 email = html.escape(form.getfirst("email", "").strip())
 
-#in case of no input
-
 if vorname == "":
 	vorname = "not given"
 if nachname == "":
@@ -47,12 +45,8 @@ print(f"""<!DOCTYPE html>
 		<h1>Arcade Game</h1>
 	</div>
 
-<!-- draw iframe for game display -->
-
 	<div class="game-wrapper">
 		<iframe id="snakeFrame" src="../game/game-file.html" width="820" height="820" scrolling="no" title="Snake Game"></iframe>
-
-<!-- show score next to iframe -->
 
 	<div class="score">
 		<h2>Score</h2>
@@ -71,8 +65,6 @@ print(f"""<!DOCTYPE html>
 	</div>
 
 <footer>
-
-<!--·Footer·for·THB-Logo, Github-repository·&·about-us·page-->
 
 	<div class="footer-logos">
 		<a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">
@@ -93,20 +85,14 @@ print(f"""<!DOCTYPE html>
 
 <script>
 
-<!-- listen for message event from game-->
-
 	window.addEventListener("message", function(event) {{
 
 		if (!event.data || typeof event.data !== "object") return;
-
-<!-- when message from type scoreUpdate > set latestScore to new score and update the score displayed next to iFrame -->
 
 		if (event.data.type === "scoreUpdate") {{
 			const latestScore = Number(event.data.score) || 0;
 			document.getElementById("scoreDisplay").textContent = latestScore;
 		}}
-
-<!--·when·message·from·type·gameOver·>·set·latestScore·to·new·score·and·update·the·score·displayed·next·to·iFrame·-->
 
 		if (event.data.type === "gameOver") {{
 			const latestScore = Number(event.data.score) || 0;
@@ -115,8 +101,6 @@ print(f"""<!DOCTYPE html>
 <!--·update·'invisible'·score·counter,·given·to·result.cgi to print Scoreboard entry·-->
 
 			document.getElementById("scoreInput").value = latestScore;
-
-<!-- confirm() calls a popup window for the player to choose if they want to  play again or proceed -->
 
 			const retry = confirm
 				("Game Over!\\n Your score: " + latestScore + " \\n \\n OK = Play again \\n Cancel = proceed to Scoreboard");
