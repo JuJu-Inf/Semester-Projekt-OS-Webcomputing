@@ -9,8 +9,6 @@ import cgitb
 
 cgitb.enable()
 
-#gives·.cgi·script·access·to·information·from·input·fields
-
 form = cgi.FieldStorage()
 
 action = form.getfirst("action", "").strip()
@@ -24,16 +22,12 @@ nachname_raw = form.getfirst("nachname", "").strip()
 email_raw = form.getfirst("email", "").strip()
 score_raw = form.getfirst("score", "0").strip()
 
-#in·case·of·no·input
-
 if vorname_raw == "":
 	vorname_raw = "not given"
 if nachname_raw == "":
 	nachname_raw = "not given"
 if email_raw == "":
 	email_raw = "not given"
-
-#converts score from text (from CSV file) to integer
 
 try:
 	score_value = int(score_raw)
@@ -68,15 +62,11 @@ with open(csv_file, "r", newline="", encoding="utf-8") as f:
 	reader = csv.reader(f)
 	rows = list(reader)
 
-#takes all rows but the header-line
-
 data_rows = rows[1:]
 
 #sort function from higest to lowest score (row[2])
 
 data_rows.sort(key=lambda row: int(row[2]), reverse=True)
-
-#safe display for HTML
 
 vorname = html.escape(vorname_raw)
 nachname = html.escape(nachname_raw)
@@ -117,8 +107,6 @@ print(f"""<!DOCTYPE html>
 		<button type="submit">back to the start</button>
 		</form>
 
-<!--·sends·form·to·CGI·Python·script·and·method·=·"post"·sends·the·values·via·HTTP·Post-->
-
 		<form action="result.cgi" method="post" onsubmit="return confirm('are you sure you want to reset the scoreboard?');">
 
 		<input type="hidden" name="action" value="reset">
@@ -156,8 +144,6 @@ print("""
 	</div>
 
 <footer>
-
-<!--·Footer·for·THB-Logo,Github-repository·&·about-us·page-->
 
 	<div class="footer-logos">
 		<a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer">

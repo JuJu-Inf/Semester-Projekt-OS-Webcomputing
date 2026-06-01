@@ -14,8 +14,6 @@ print(f"""<!DOCTYPE html>
 
 <html lang="de">
 
-<!-- setting parameters for Website -->
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +21,6 @@ print(f"""<!DOCTYPE html>
 	<link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 
-<!-- header for Website -->
 <body class="about-us">
 	<div class="header-row">
 		<h1> About us</h1>
@@ -34,8 +31,6 @@ print(f"""<!DOCTYPE html>
 <!-- a wrapper container holding both wrappers of this site for easy formatting -->
 
 <div class="wrapper-container">
-
-<!-- wrappers for programmer info -->
 
 <div class="wrapper2">
 
@@ -56,8 +51,6 @@ print(f"""<!DOCTYPE html>
 
 </div>
 
-<!-- button to go back to the Homepage using standard wrapper to format -->
-
 <div class="wrapper">
 	<form action="../project.html" method="post">
 	<button type="submit">back</button>
@@ -66,8 +59,6 @@ print(f"""<!DOCTYPE html>
 </main>
 
 <footer>
-
-<!--·Footer·for·THB-Logo,Github-repository·&·about-us·page-->
 
 	<div class= "footer-logos">
 		<a href="https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing" target="_blank" rel="noopener noreferrer" class="logo-link">
