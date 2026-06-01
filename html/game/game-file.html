@@ -30,6 +30,8 @@ let food;
 let score;
 let canChangeDirection;
 let gameInterval;
+let isPaused = false;
+let gameStarted = false;
 
 function sendScore() {
 	window.parent.postMessage({
@@ -135,12 +137,44 @@ function draw() {
 	ctx.fillRect(food.x, food.y, size, size);
 	}
 
+function startGame() {
+
+	if (gameStarted && !isPaused) return;
+
+	if (!gameStarted) {
+		initGame();
+		gameStarted = true;
+	}
+
+	isPaused = false;
+	clearInterval(gameInterval);
+	gameInterval = setInterval(gameLoop, 85);
+}
+
+function pauseGame() {
+
+	if (!gameStarted || isPaused) return;
+
+	isPaused = true;
+	clearInterval(gameInterval);
+}
+
+function resumeGame() {
+
+	if (!gameStarted || !isPaused) return;
+
+	isPaused = false;
+	clearInterval(gameInterval);
+	gameInterval = setInterval(gameLoop, 85);
+}
+
 function gameLoop() {
 	update();
 	draw();
 }
 
 document.addEventListener("keydown", function(e) {
+	if (isPaused) return;
 	if (!canChangeDirection) return;
 
 	const key = e.key.toLowerCase();
@@ -169,11 +203,27 @@ document.addEventListener("keydown", function(e) {
 window.addEventListener("message", function(event) {
 	if (!event.data || typeof event.data !== "object") return;
 
-		if (event.data.type === "restartGame") {
-			clearInterval(gameInterval);
-			restartGame();
-			gameInterval = setInterval(gameLoop, 85);
+	if (event.data.type === "startGame") {
+		startGame();
 	}
+
+	if (event.data.type === "restartGame") {
+		clearInterval(gameInterval);
+		gameStarted = false;
+		isPaused = false;
+		startGame();
+	}
+
+	if (event.data.type === "togglePause") {
+		if (!gameStarted) return;
+
+		if (isPaused) {
+			resumeGame();
+		}
+		else {
+		pauseGame();
+		}
+		}
 });
 
 window.addEventListener("load", function() {
@@ -184,6 +234,7 @@ window.addEventListener("load", function() {
 });
 
 initGame();
+gameStarted=true;
 gameInterval = setInterval(gameLoop, 85);
 </script>
 </body>

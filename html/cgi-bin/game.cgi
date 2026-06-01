@@ -54,17 +54,16 @@ print(f"""<!DOCTYPE html>
 	<div class="score">
 		<h2>Score</h2>
 		<p id="scoreDisplay">0</p>
+		<button type="button" id="pauseButton">Pause</button>
 	</div>
 	</div>
 
-	<div class="wrapper">
 		<form id="resultForm" action="result.cgi" method="post">
 			<input type="hidden" name="vorname" value="{vorname}">
 			<input type="hidden" name="nachname" value="{nachname}">
 			<input type="hidden" name="score" id="scoreInput" value="0">
-		<button type="submit">Weiter zur Auswertung</button>
 		</form>
-	</div>
+
 
 <footer>
 
@@ -83,9 +82,26 @@ print(f"""<!DOCTYPE html>
 	</div>
 </footer>
 
-<!-- script processing the information that is being sent by the game-file -->
+<!-- script processing the information that is being sent by the game-file & pausbutton logic -->
 
 <script>
+
+const pauseButton = document.getElementById("pauseButton");
+const snakeFrame = document.getElementById("snakeFrame");
+
+let paused = false;
+
+	pauseButton.addEventListener("click", function () {{
+
+		document.getElementById("snakeFrame").contentWindow.postMessage({{ type: "togglePause" }}, "*");
+		paused = !paused;
+		pauseButton.textContent = paused ? "Resume" : "Pause";
+
+		setTimeout(function() {{
+			snakeFrame.focus();
+			snakeFrame.contentWindow.focus();
+		}}, 0);
+	}});
 
 	window.addEventListener("message", function(event) {{
 
