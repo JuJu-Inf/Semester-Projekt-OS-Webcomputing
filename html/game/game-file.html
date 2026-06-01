@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 
 <head>
@@ -16,6 +16,9 @@
 <script>
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+
+const params = new URLSearchParams(window.location.search);
+const snakeColor = params.get("snakeColor");
 
 const size = 20;
 const cols = canvas.width / size;
@@ -120,11 +123,11 @@ function draw() {
 	ctx.fillStyle = "black";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	ctx.fillStyle = "lime";
+	ctx.fillStyle = snakeColor;
 
 	for (const s of snake) {
 		ctx.fillRect(s.x, s.y, size, size);
-		ctx.strokeStyle = "#0a0";
+		ctx.strokeStyle = snakeColor;
 		ctx.strokeRect(s.x, s.y, size, size);
 	}
 

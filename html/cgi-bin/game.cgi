@@ -3,6 +3,7 @@
 
 import cgi
 import html
+import urllib.parse
 
 #gives .cgi script access to information from input fields
 
@@ -14,14 +15,16 @@ form = cgi.FieldStorage()
 
 vorname = html.escape(form.getfirst("vorname", "").strip())
 nachname = html.escape(form.getfirst("nachname", "").strip())
-email = html.escape(form.getfirst("email", "").strip())
+snake_color = form.getfirst("snakeColor", "").strip()
 
 if vorname == "":
 	vorname = "not given"
 if nachname == "":
 	nachname = "not given"
-if email == "":
-	email = "not given"
+if snake_color  == "":
+	snake_color = "#579934"
+
+snake_color_url = urllib.parse.quote(snake_color)
 
 print("Content-Type: text/html; charset=utf-8")
 print()
@@ -46,7 +49,7 @@ print(f"""<!DOCTYPE html>
 	</div>
 
 	<div class="game-wrapper">
-		<iframe id="snakeFrame" src="../game/game-file.html" width="820" height="820" scrolling="no" title="Snake Game"></iframe>
+		<iframe id="snakeFrame" src="../game/game-file.html?snakeColor={snake_color_url}" width="820" height="820" scrolling="no" title="Snake Game"></iframe>
 
 	<div class="score">
 		<h2>Score</h2>
@@ -58,7 +61,6 @@ print(f"""<!DOCTYPE html>
 		<form id="resultForm" action="result.cgi" method="post">
 			<input type="hidden" name="vorname" value="{vorname}">
 			<input type="hidden" name="nachname" value="{nachname}">
-			<input type="hidden" name="email" value="{email}">
 			<input type="hidden" name="score" id="scoreInput" value="0">
 		<button type="submit">Weiter zur Auswertung</button>
 		</form>
