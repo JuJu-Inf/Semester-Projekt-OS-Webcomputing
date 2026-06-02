@@ -46,7 +46,10 @@ print(f"""<!DOCTYPE html>
 <div class="wrapper3">
 	<p class="center-text"><span class="underline">Julius Voigt</span></p>
 	<p>- 2nd Semester Computer Science student at TH-Brandenburg</p>
+	<p>- Matrikel Nr. : 20248433
 	<p>- working on Snake-Game and Design for this project</p>
+ 	<p>- <span class="underline">GitHub</span>:</p>
+        <p><a href="https://github.com/Suygel" target="_blank" rel="noopener noreferrer">Julius Voigt / Suygel</a></p>
 </div>
 
 </div>

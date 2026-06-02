@@ -131,7 +131,8 @@ button:hover {
 }
 
 .homepage input {
-	padding: 10px;
+	width: auto;
+        padding: 10px;
 	font-family: PressStart2P;
 	font-size: 16px;
 	color: #FFFFFF;
@@ -256,11 +257,6 @@ game-page {
 
 /*	 result-page stylization	*/
 
-
-
-.result-page {
-	overflow: hidden;
-}
 
 .result-page .score-table {
 	width: 100%;
