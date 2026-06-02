@@ -3,6 +3,7 @@
 
 import cgi
 import html
+import urllib.parse
 
 #gives .cgi script access to information from input fields
 
@@ -14,14 +15,16 @@ form = cgi.FieldStorage()
 
 vorname = html.escape(form.getfirst("vorname", "").strip())
 nachname = html.escape(form.getfirst("nachname", "").strip())
-email = html.escape(form.getfirst("email", "").strip())
+snake_color = form.getfirst("snakeColor", "").strip()
 
 if vorname == "":
 	vorname = "not given"
 if nachname == "":
 	nachname = "not given"
-if email == "":
-	email = "not given"
+if snake_color  == "":
+	snake_color = "#579934"
+
+snake_color_url = urllib.parse.quote(snake_color)
 
 print("Content-Type: text/html; charset=utf-8")
 print()
@@ -46,23 +49,21 @@ print(f"""<!DOCTYPE html>
 	</div>
 
 	<div class="game-wrapper">
-		<iframe id="snakeFrame" src="../game/game-file.html" width="820" height="820" scrolling="no" title="Snake Game"></iframe>
+		<iframe id="snakeFrame" src="../game/game-file.html?snakeColor={snake_color_url}" width="820" height="820" scrolling="no" title="Snake Game"></iframe>
 
 	<div class="score">
 		<h2>Score</h2>
 		<p id="scoreDisplay">0</p>
+		<button type="button" id="pauseButton">Pause</button>
 	</div>
 	</div>
 
-	<div class="wrapper">
 		<form id="resultForm" action="result.cgi" method="post">
 			<input type="hidden" name="vorname" value="{vorname}">
 			<input type="hidden" name="nachname" value="{nachname}">
-			<input type="hidden" name="email" value="{email}">
 			<input type="hidden" name="score" id="scoreInput" value="0">
-		<button type="submit">Weiter zur Auswertung</button>
 		</form>
-	</div>
+
 
 <footer>
 
@@ -81,9 +82,26 @@ print(f"""<!DOCTYPE html>
 	</div>
 </footer>
 
-<!-- script processing the information that is being sent by the game-file -->
+<!-- script processing the information that is being sent by the game-file & pausbutton logic -->
 
 <script>
+
+const pauseButton = document.getElementById("pauseButton");
+const snakeFrame = document.getElementById("snakeFrame");
+
+let paused = false;
+
+	pauseButton.addEventListener("click", function () {{
+
+		document.getElementById("snakeFrame").contentWindow.postMessage({{ type: "togglePause" }}, "*");
+		paused = !paused;
+		pauseButton.textContent = paused ? "Resume" : "Pause";
+
+		setTimeout(function() {{
+			snakeFrame.focus();
+			snakeFrame.contentWindow.focus();
+		}}, 0);
+	}});
 
 	window.addEventListener("message", function(event) {{
 

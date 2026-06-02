@@ -2,6 +2,8 @@
 
 Project-link: http://pan.th-brandenburg.de/~radkep/project.html
 
+GitHub-link: https://github.com/JuJu-Inf/Semester-Projekt-OS-Webcomputing
+
 Project Description:
 
 This website features a classic Snake arcade game with a simple three-page structure: a homepage, a gameplay page, and a results page.
