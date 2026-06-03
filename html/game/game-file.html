@@ -5,6 +5,7 @@
 
 <meta charset="UTF-8">
 
+	<!-- layout width relative to screen and load at 100% zoom -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Snake Game</title>
@@ -14,16 +15,21 @@
 <canvas id="game" width="800" height="800"></canvas>
 
 <script>
+
+	<!-- prepare Canvas -->
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
+	<!-- get URL-parameters -->
 const params = new URLSearchParams(window.location.search);
 const snakeColor = params.get("snakeColor");
 
+	<!-- set size for snake and gamefield -->
 const size = 20;
 const cols = canvas.width / size;
 const rows = canvas.height / size;
 
+	<!-- initiate game-variables-->
 let snake;
 let direction;
 let food;
@@ -33,6 +39,7 @@ let gameInterval;
 let isPaused = false;
 let gameStarted = false;
 
+	<!-- function for sending score to iframe -->
 function sendScore() {
 	window.parent.postMessage({
 		type: "scoreUpdate",
@@ -40,6 +47,7 @@ function sendScore() {
 	}, "*");
 }
 
+        <!-- function for sending game over to iframe -->
 function sendGameOver() {
 	window.parent.postMessage({
 		type: "gameOver",
@@ -47,6 +55,7 @@ function sendGameOver() {
 	}, "*");
 }
 
+        <!-- function for placing food + checking, if block of placement contains a part of the snake -->
 function placeFood() {
 	let valid = false;
 
@@ -67,6 +76,7 @@ function placeFood() {
 	}
 }
 
+        <!-- function for starting the game + resetting most variables -->
 function initGame() {
 	snake = [{ x: 300, y: 300 }];
 	direction = "RIGHT";
@@ -77,15 +87,18 @@ function initGame() {
 	draw();
 }
 
+        <!-- function for restart the game -->
 function restartGame() {
 	initGame();
 }
 
+        <!-- function for ending the game -->
 function gameOver() {
 	clearInterval(gameInterval);
 	sendGameOver();
 }
 
+        <!-- main function for running the game / updating the variables -->
 function update() {
 	canChangeDirection = true;
 
@@ -121,6 +134,7 @@ function update() {
 	}
 }
 
+        <!-- function for the colors of the game -->
 function draw() {
 	ctx.fillStyle = "black";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -137,6 +151,7 @@ function draw() {
 	ctx.fillRect(food.x, food.y, size, size);
 	}
 
+        <!-- function for starting the game + checking, if the game is started or paused -->
 function startGame() {
 
 	if (gameStarted && !isPaused) return;
@@ -151,6 +166,7 @@ function startGame() {
 	gameInterval = setInterval(gameLoop, 85);
 }
 
+        <!-- function for pausing the game -->
 function pauseGame() {
 
 	if (!gameStarted || isPaused) return;
@@ -159,6 +175,7 @@ function pauseGame() {
 	clearInterval(gameInterval);
 }
 
+        <!-- function for stop pausing the game -->
 function resumeGame() {
 
 	if (!gameStarted || !isPaused) return;
@@ -168,11 +185,13 @@ function resumeGame() {
 	gameInterval = setInterval(gameLoop, 85);
 }
 
+        <!-- main loop of the game (1 Frame per loop) -->
 function gameLoop() {
 	update();
 	draw();
 }
 
+        <!-- function for controls + preventing U-turn in 1 frame -->
 document.addEventListener("keydown", function(e) {
 	if (isPaused) return;
 	if (!canChangeDirection) return;
@@ -200,6 +219,7 @@ document.addEventListener("keydown", function(e) {
 	}
 });
 
+        <!-- function for receiving messages from iframe -->
 window.addEventListener("message", function(event) {
 	if (!event.data || typeof event.data !== "object") return;
 
@@ -226,6 +246,7 @@ window.addEventListener("message", function(event) {
 		}
 });
 
+        <!-- function for setting focus on the frame -->
 window.addEventListener("load", function() {
 	window.focus();
 	document.body.addEventListener("click", function() {
@@ -233,8 +254,11 @@ window.addEventListener("load", function() {
 	});
 });
 
+        <!-- start game -->
 initGame();
 gameStarted=true;
+
+        <!-- set framerate to 1 frame per 85 ms -->
 gameInterval = setInterval(gameLoop, 85);
 </script>
 </body>
