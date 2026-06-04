@@ -211,15 +211,15 @@ game-page {
 }
 
 .game .body·{
-	margin:·10px;
-	background:·#170033;
+	margin: 10px;
+	background: #170033;
 }
 
 .game .canvas·{
-	display:·block;
-	margin:·auto;
-	background:·#111;
-	border:·2px·solid·#444;
+	display: block;
+	margin: auto;
+	background: #111;
+	border: 2px solid #444;
 }
 
 .game-page .game-wrapper {
